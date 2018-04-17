@@ -166,4 +166,5 @@ production:
   clients:
     default:
       database: what-did-i-read_production
-      hosts: ["mongodb:27017"]
+      hosts:
+        - localhost:27017
