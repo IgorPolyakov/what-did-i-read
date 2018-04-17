@@ -2,16 +2,31 @@
 <html lang="en" ng-app="bookApp">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Book List</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 </head>
 <body ng-controller="MainController">
-	<div class="contrainer">
-		{{listBooks._id}}
-	</div>
-
+	<section>
+		<div class="container">
+			<div class="row text-center mt-5 mb-5">
+				<div class="col-12 col-md-3" ng-repeat="book in listBooks">
+					<div class="card">
+						<img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
+						<div class="card-body">
+							<h5 class="card-title">{{book.title}}</h5>
+							<div class="progress">
+  								<div class="progress-bar bg-info" role="progressbar" style="width: {{book.progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row"></div>
+		</div>
+	</section>
 
 	<script src="js/app.js"></script>
 	<script src="js/controllers/mainController.js"></script>
