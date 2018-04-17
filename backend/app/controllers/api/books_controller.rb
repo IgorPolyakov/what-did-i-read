@@ -38,7 +38,7 @@ module Api
     private
 
     def set_books
-      @book = Books.find_by(relative_reference: params[:relative_reference])
+      @book = Books.find(params[:id])
     end
 
     def parameters

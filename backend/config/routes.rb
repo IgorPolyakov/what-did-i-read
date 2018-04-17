@@ -2,7 +2,7 @@
 
 Rails.application.routes.draw do
   namespace :api, path: '/' do
-    resources :books, param: :relative_reference
+    resources :books
     resources :auth, only: :create
   end
 end
