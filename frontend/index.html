@@ -3,17 +3,27 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Book List</title>
+	<title>What Did I Read</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 </head>
 <body ng-controller="MainController">
-	<section>
+	<section class="header" class="bg-dark">
 		<div class="container">
-			<div class="row text-center mt-5 mb-5">
-				<div class="col-12 col-md-3" ng-repeat="book in listBooks">
+			<div class="row mt-5">
+				<div class="col-12">
+					<h2 class="display-4">What Did I Read</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="myBooks">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in listBooks">
 					<div class="card">
+						<span class="desc">{{book.description}}</span>
 						<img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
 						<div class="card-body">
 							<h5 class="card-title">{{book.title}}</h5>
@@ -22,12 +32,11 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>				
 			</div>
-			<div class="row"></div>
 		</div>
 	</section>
-
+	
 	<script src="js/app.js"></script>
 	<script src="js/controllers/mainController.js"></script>
 	<script src="js/services/books.js"></script>

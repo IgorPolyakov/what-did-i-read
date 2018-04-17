@@ -1,0 +1,18 @@
+.desc{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.5);
+	color: white;
+	text-align: center;
+	padding: 30px;
+	opacity: 0;
+	-webkit-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+}
+.card:hover .desc{
+	opacity: 1;
+}
