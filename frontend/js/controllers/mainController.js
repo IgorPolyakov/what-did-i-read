@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', 'books', 'newBook' , function($scope, books, newBook){
+app.controller('MainController', ['$scope', 'books', 'addNewBook' , function($scope, books, newBook){
 	$scope.title = 'Hello'
 	books.success(function(data){
 		$scope.listBooks = data;

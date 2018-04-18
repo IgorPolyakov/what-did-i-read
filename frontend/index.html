@@ -44,18 +44,18 @@
 						<div class="card-body">
 							<form>
   								<div class="form-group">
-    								<input ng-model="book.title" type="text" class="form-control" placeholder="Book Title">
+    								<input ng-model="newBook.title" type="text" class="form-control" placeholder="Book Title">
   								</div>
 								<div class="form-group">
-    								<input ng-model="book.url_cover" type="text" class="form-control" placeholder="URL cover">
+    								<input ng-model="newBook.url_cover" type="text" class="form-control" placeholder="URL cover">
   								</div>
   								<div class="form-group">
-    								<input ng-model="book.progress" type="text" class="form-control" placeholder="Progress is">
+    								<input ng-model="newBook.progress" type="text" class="form-control" placeholder="Progress is">
   								</div>
   								<div class="form-group">
-    								<textarea ng-model="book.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
+    								<textarea ng-model="newBook.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
   								</div>
-  								<button ng-click="addBook(book)" type="button" class="btn btn-primary">Create</button>
+  								<button ng-click="addBook(newBook)" type="button" class="btn btn-primary">Create</button>
 							</form>
 						</div>
 					</div>
@@ -67,6 +67,6 @@
 	<script src="js/app.js"></script>
 	<script src="js/controllers/mainController.js"></script>
 	<script src="js/services/getBooks.js"></script>
-	<script src="js/services/newBook.js"></script>
+	<script src="js/services/addNewBook.js"></script>
 </body>
 </html>
