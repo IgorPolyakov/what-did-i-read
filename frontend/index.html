@@ -20,16 +20,43 @@
 	</section>
 	<section id="myBooks">
 		<div class="container">
-			<div class="row">
-				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in listBooks">
-					<div class="card">
-						<span class="desc">{{book.description}}</span>
+			<div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
+				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in listBooks | orderBy : sortDate">
+					<div class="card" ng-click="descMore = !descMore">
+						<span class="desc" ng-show="descMore">
+							<p>{{book.description}}</p>
+							<p>Created At <br>{{book.created_at | date}}</p>
+						</span>
 						<img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
 						<div class="card-body">
 							<h5 class="card-title">{{book.title}}</h5>
 							<div class="progress">
   								<div class="progress-bar bg-info" role="progressbar" style="width: {{book.progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
 							</div>
+							<div class="updated mt-2">
+								<p>Last Updated<br> {{book.updated_at | date}}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center">
+					<div class="card">
+						<div class="card-body">
+							<form>
+  								<div class="form-group">
+    								<input ng-model="book.title" type="text" class="form-control" placeholder="Book Title">
+  								</div>
+								<div class="form-group">
+    								<input ng-model="book.url_cover" type="text" class="form-control" placeholder="URL cover">
+  								</div>
+  								<div class="form-group">
+    								<input ng-model="book.progress" type="text" class="form-control" placeholder="Progress is">
+  								</div>
+  								<div class="form-group">
+    								<textarea ng-model="book.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
+  								</div>
+  								<button ng-click="addBook(book)" type="button" class="btn btn-primary">Create</button>
+							</form>
 						</div>
 					</div>
 				</div>				
