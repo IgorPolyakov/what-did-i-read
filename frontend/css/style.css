@@ -12,3 +12,6 @@
 	-o-transition: all .05s;
 	transition: all .05s;
 }
+.card-img-top{
+	height: 253px;
+}

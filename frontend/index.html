@@ -6,7 +6,9 @@
 	<title>What Did I Read</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/themify-icons/themify-icons.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+	<script  src="https://code.jquery.com/jquery-3.3.1.min.js"  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="  crossorigin="anonymous"></script>
 </head>
 <body ng-controller="MainController">
 	<section class="header" class="bg-dark">
@@ -27,6 +29,23 @@
 							<p>{{book.description}}</p>
 							<p>Created At <br>{{book.created_at | date}}</p>
 						</span>
+						<span class="desc" ng-show="changeMod">
+							<form>
+  								<div class="form-group">
+    								<input ng-model="title" type="text" class="form-control" placeholder="Book Title">
+  								</div>
+								<div class="form-group">
+    								<input ng-model="url_cover" type="text" class="form-control" placeholder="URL cover">
+  								</div>
+  								<div class="form-group">
+    								<input ng-model="progress" type="text" class="form-control" placeholder="Progress is">
+  								</div>
+  								<div class="form-group">
+    								<textarea ng-model="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
+  								</div>
+  								<button ng-click="changeData(book._id.$oid)" type="button" class="btn btn-primary">Create</button>
+							</form>
+						</span>
 						<img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
 						<div class="card-body">
 							<h5 class="card-title">{{book.title}}</h5>
@@ -36,6 +55,8 @@
 							<div class="updated mt-2">
 								<p>Last Updated<br> {{book.updated_at | date}}</p>
 							</div>
+							<span ng-click="changeMod = !changeMod" class="ti-pencil"></span>
+							<span ng-click="deleteData(book._id.$oid)" class="ti-trash"></span>
 						</div>
 					</div>
 				</div>
@@ -44,18 +65,18 @@
 						<div class="card-body">
 							<form>
   								<div class="form-group">
-    								<input ng-model="newBook.title" type="text" class="form-control" placeholder="Book Title">
+    								<input ng-model="title" type="text" class="form-control" placeholder="Book Title">
   								</div>
 								<div class="form-group">
-    								<input ng-model="newBook.url_cover" type="text" class="form-control" placeholder="URL cover">
+    								<input ng-model="url_cover" type="text" class="form-control" placeholder="URL cover">
   								</div>
   								<div class="form-group">
-    								<input ng-model="newBook.progress" type="text" class="form-control" placeholder="Progress is">
+    								<input ng-model="progress" type="text" class="form-control" placeholder="Progress is">
   								</div>
   								<div class="form-group">
-    								<textarea ng-model="newBook.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
+    								<textarea ng-model="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
   								</div>
-  								<button ng-click="addBook(newBook)" type="button" class="btn btn-primary">Create</button>
+  								<button ng-click="sendData()" type="button" class="btn btn-primary">Create</button>
 							</form>
 						</div>
 					</div>
@@ -67,6 +88,5 @@
 	<script src="js/app.js"></script>
 	<script src="js/controllers/mainController.js"></script>
 	<script src="js/services/getBooks.js"></script>
-	<script src="js/services/addNewBook.js"></script>
 </body>
 </html>
