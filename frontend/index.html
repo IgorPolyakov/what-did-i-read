@@ -26,11 +26,7 @@
 		<div class="container">
 			<div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
 				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in listBooks | orderBy : sortDate">
-					<div class="card" ng-click="descMore = !descMore">
-						<span class="desc" ng-show="descMore">
-							<p>{{book.description}}</p>
-							<p>Created At <br>{{book.created_at | date}}</p>
-						</span>
+					<div class="card">
 						<span class="desc" ng-show="changeMod">
 							<form>
   								<div class="form-group">
@@ -46,6 +42,7 @@
     								<textarea ng-model="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
   								</div>
   								<button ng-click="changeData(book._id.$oid)" type="button" class="btn btn-primary">Update</button>
+  								<button class="btn" ng-click="changeMod = !changeMod">Close</button>
 							</form>
 						</span>
 						<img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
