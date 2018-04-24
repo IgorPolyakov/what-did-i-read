@@ -77,7 +77,7 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 				'Accept': 'application/json'
 			}
 		};
-		$http.put('http://185.40.31.149:9999/books/'+id, config)
+		$http.delete('http://185.40.31.149:9999/books/'+id, config)
 			.success(function(header, config){
 				console.log('Goood');
 				$scope.getData();
