@@ -62,8 +62,7 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        command %(mkdir -p tmp/)
-        command %(touch tmp/restart.txt)
+        command %(sudo systemctl restart what-did-i-read-master.service)
       end
     end
   end
