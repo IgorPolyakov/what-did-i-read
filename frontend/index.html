@@ -45,6 +45,15 @@
   								<button class="btn" ng-click="changeMod = !changeMod">Close</button>
 							</form>
 						</span>
+						<span class="desc" ng-show="delMode">
+							<form>
+  								<div class="form-group">
+    								<h3>Are you sure to delete this one?</h3>
+  								</div>
+  								<button ng-click="deleteData(book._id.$oid)" type="button" class="btn btn-primary">Yes</button>
+  								<button class="btn" ng-click="delMode = !delMode">No</button>
+							</form>
+						</span>
 						<img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
 						<div class="card-body">
 							<h5 class="card-title">{{book.title}}</h5>
@@ -55,7 +64,7 @@
 								<p>Last Updated<br> {{book.updated_at | date}}</p>
 							</div>
 							<span ng-click="changeMod = !changeMod" class="far fa-edit"></span>
-							<span ng-click="deleteData(book._id.$oid)" class="far fa-trash-alt"></span>
+							<span ng-click="delMode = !delMode" class="far fa-trash-alt"></span>
 						</div>
 					</div>
 				</div>

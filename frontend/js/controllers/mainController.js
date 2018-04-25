@@ -10,7 +10,7 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 		});
 	};
 	//Description modal
-	$scope.descMore = false;
+	$scope.delMode = false;
 	$scope.changeMod = false;
 
 	//POST request
