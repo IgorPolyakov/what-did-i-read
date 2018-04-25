@@ -1,4 +1,4 @@
-app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope, getBooks, $http){
+app.controller('MainController', ['$scope', 'getBooks', '$http', '$window', function($scope, getBooks, $http, $window){
 	
 	//GET requst
 	getBooks.success(function(data){
@@ -30,6 +30,7 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 		$http.post('http://185.40.31.149:9999/books', data, config)
 			.success(function(data, headers, config){
 				console.log('Goood');
+				$window.location.reload();
 			})
 			.error(function(){
 				console.log('Error');
@@ -57,6 +58,7 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 		$http.put('http://185.40.31.149:9999/books/'+ id, data, config)
 			.success(function(data, header, config){
 				console.log('Goood');
+				$window.location.reload();
 			})
 			.error(function(){
 				console.log('Error');
@@ -74,6 +76,7 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 		$http.delete('http://185.40.31.149:9999/books/'+id, config)
 			.success(function(header, config){
 				console.log('Goood');
+				$window.location.reload();
 			})
 			.error(function(){
 				console.log('Error');
