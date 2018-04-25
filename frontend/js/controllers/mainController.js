@@ -1,15 +1,11 @@
 app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope, getBooks, $http){
+	
+	//GET requst
 	getBooks.success(function(data){
 		$scope.listBooks = data;
 	});
 
-	//GET requst
-	$scope.getData = function(){
-		getBooks.success(function(data){
-			$scope.listBooks = data;
-		});
-	};
-	//Description modal
+	//Modal forms
 	$scope.delMode = false;
 	$scope.changeMod = false;
 
@@ -34,7 +30,6 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 		$http.post('http://185.40.31.149:9999/books', data, config)
 			.success(function(data, headers, config){
 				console.log('Goood');
-				$scope.getData();
 			})
 			.error(function(){
 				console.log('Error');
@@ -42,14 +37,14 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 	};
 
 	//PUT request
-	$scope.changeData = function(id){
+	$scope.changeData = function(id, ttl, cvr, prg, desc){
 		var data = $.param(
 			{
 				books: {
-			title: $scope.title,
-			url_cover: $scope.url_cover,
-			progress: $scope.progress,
-			description: $scope.description}
+			title: ttl,
+			url_cover: cvr,
+			progress: prg,
+			description: desc}
 		}
 		);
 
@@ -62,7 +57,6 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 		$http.put('http://185.40.31.149:9999/books/'+ id, data, config)
 			.success(function(data, header, config){
 				console.log('Goood');
-				$scope.getData();
 			})
 			.error(function(){
 				console.log('Error');
@@ -80,7 +74,6 @@ app.controller('MainController', ['$scope', 'getBooks', '$http', function($scope
 		$http.delete('http://185.40.31.149:9999/books/'+id, config)
 			.success(function(header, config){
 				console.log('Goood');
-				$scope.getData();
 			})
 			.error(function(){
 				console.log('Error');

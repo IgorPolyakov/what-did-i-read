@@ -8,8 +8,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 
 <body ng-controller="MainController">
@@ -26,7 +24,9 @@
 		<div class="container">
 			<div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
 				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in listBooks | orderBy : sortDate">
+					<!--Book card-->
 					<div class="card">
+						<!--Changing form-->
 						<span class="desc" ng-show="changeMod">
 							<form>
   								<div class="form-group">
@@ -41,10 +41,11 @@
   								<div class="form-group">
     								<textarea ng-model="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
   								</div>
-  								<button ng-click="changeData(book._id.$oid)" type="button" class="btn btn-primary">Update</button>
+  								<button ng-click="changeData(book._id.$oid, title, url_cover, progress, description)" type="button" class="btn btn-primary">Update</button>
   								<button class="btn" ng-click="changeMod = !changeMod">Close</button>
 							</form>
 						</span>
+						<!--Deleting form-->
 						<span class="desc" ng-show="delMode">
 							<form>
   								<div class="form-group">
@@ -69,6 +70,7 @@
 					</div>
 				</div>
 				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center">
+					<!--Creating form-->
 					<div class="card">
 						<div class="card-body">
 							<form>
@@ -92,9 +94,20 @@
 			</div>
 		</div>
 	</section>
+	
+	<!--AngularJS-->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 
+	<!--JQuery-->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	
+	<!--Modules-->
 	<script src="js/app.js"></script>
+
+	<!--Controllers-->
 	<script src="js/controllers/mainController.js"></script>
+
+	<!--Services-->
 	<script src="js/services/getBooks.js"></script>
 </body>
 
