@@ -1,114 +1,44 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="bookApp">
-
+﻿<!DOCTYPE html>
+<html ng-app="app">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>What Did I Read</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/style.css">
+    <title>What did I read</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>What Did I Read</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link href="app-content/app.css" rel="stylesheet" />
 </head>
+<body>
+    
+    <section class="header" class="bg-dark">
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h2 class="display-4">What Did I Read</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="myBooks">
 
-<body ng-controller="MainController">
-	<section class="header" class="bg-dark">
-		<div class="container">
-			<div class="row mt-5">
-				<div class="col-12">
-					<h2 class="display-4">What Did I Read</h2>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section id="myBooks">
-		<div class="container">
-			<div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
-				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in listBooks | orderBy : sortDate">
-					<!--Book card-->
-					<div class="card">
-						<!--Changing form-->
-						<span class="desc" ng-show="changeMod">
-							<form>
-  								<div class="form-group">
-    								<input ng-model="title" type="text" class="form-control" placeholder="Book Title">
-  								</div>
-								<div class="form-group">
-    								<input ng-model="url_cover" type="text" class="form-control" placeholder="URL cover">
-  								</div>
-  								<div class="form-group">
-    								<input ng-model="progress" type="text" class="form-control" placeholder="Progress is">
-  								</div>
-  								<div class="form-group">
-    								<textarea ng-model="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
-  								</div>
-  								<button ng-click="changeData(book._id.$oid, title, url_cover, progress, description)" type="button" class="btn btn-primary">Update</button>
-  								<button class="btn" ng-click="changeMod = !changeMod">Close</button>
-							</form>
-						</span>
-						<!--Deleting form-->
-						<span class="desc" ng-show="delMode">
-							<form>
-  								<div class="form-group">
-    								<h3>Are you sure to delete this one?</h3>
-  								</div>
-  								<button ng-click="deleteData(book._id.$oid)" type="button" class="btn btn-primary">Yes</button>
-  								<button class="btn" ng-click="delMode = !delMode">No</button>
-							</form>
-						</span>
-						<img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
-						<div class="card-body">
-							<h5 class="card-title">{{book.title}}</h5>
-							<div class="progress">
-								<div class="progress-bar bg-info" role="progressbar" style="width: {{book.progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-							</div>
-							<div class="updated mt-2">
-								<p>Last Updated<br> {{book.updated_at | date}}</p>
-							</div>
-							<span ng-click="changeMod = !changeMod" class="far fa-edit"></span>
-							<span ng-click="delMode = !delMode" class="far fa-trash-alt"></span>
-						</div>
-					</div>
-				</div>
-				<div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center">
-					<!--Creating form-->
-					<div class="card">
-						<div class="card-body">
-							<form>
-								<div class="form-group">
-									<input ng-model="title" type="text" class="form-control" placeholder="Book Title">
-								</div>
-								<div class="form-group">
-									<input ng-model="url_cover" type="text" class="form-control" placeholder="URL cover">
-								</div>
-								<div class="form-group">
-									<input ng-model="progress" type="text" class="form-control" placeholder="Progress is">
-								</div>
-								<div class="form-group">
-									<textarea ng-model="description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
-								</div>
-								<button ng-click="sendData()" type="button" class="btn btn-primary">Create</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	
-	<!--AngularJS-->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <ng-view></ng-view>
+        
+    </section>
 
-	<!--JQuery-->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	
-	<!--Modules-->
-	<script src="js/app.js"></script>
 
-	<!--Controllers-->
-	<script src="js/controllers/mainController.js"></script>
+    <!-- angular scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
 
-	<!--Services-->
-	<script src="js/services/getBooks.js"></script>
+    <!-- application scripts -->
+    <script src="app.js"></script>
+    <script src="app-services/authentication.service.js"></script>
+    <script src="home/index.controller.js"></script>
+    <script src="login/index.controller.js"></script>
+    
 </body>
-
 </html>
