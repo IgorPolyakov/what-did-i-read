@@ -2,16 +2,16 @@
 
 module Api
   class BooksController < ApplicationController
-    before_action :set_books, only: %i[show update destroy]
-    skip_before_action :authenticate_user
+    before_action :set_book, only: %i[show update destroy]
+    before_action :authenticate_user
 
     def index
-      books = Books.all
-      render json: books, status: :ok
+      book = current_user.book
+      render json: book, status: :ok
     end
 
     def create
-      book = Books.new(parameters)
+      book = Book.new(parameters)
       if book.save
         render json: book, status: :created
       else
@@ -37,12 +37,12 @@ module Api
 
     private
 
-    def set_books
-      @book = Books.find(params[:id])
+    def set_book
+      @book = Book.find(params[:id])
     end
 
     def parameters
-      params.require(:books).permit(:title, :url_cover, :description, :progress)
+      params.require(:book).permit(:title, :url_cover, :description, :progress)
     end
   end
 end

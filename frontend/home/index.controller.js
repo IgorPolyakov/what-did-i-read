@@ -24,7 +24,7 @@
         function sendData(){
             var data = $.param(
             {
-                books: {
+                book: {
             title: vm.title,
             url_cover: vm.url_cover,
             progress: vm.progress,

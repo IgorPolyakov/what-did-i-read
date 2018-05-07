@@ -28,7 +28,7 @@ class AuthenticateUserCommand < BaseCommand
 
   def contents
     {
-      user_id: user.id,
+      user_id: user.id.to_s,
       email: user.email,
       exp: 24.hours.from_now.to_i
     }

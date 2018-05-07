@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Books
+class Book
   include Mongoid::Document
+  belongs_to :user
   field :title, type: String
   field :url_cover, type: String
   field :description, type: String

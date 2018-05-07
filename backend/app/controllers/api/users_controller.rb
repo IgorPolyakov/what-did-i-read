@@ -7,8 +7,7 @@ module Api
     # GET /users
     def index
       @users = User.all
-
-      render json: @users
+      render json: json_list(@users)
     end
 
     # GET /users/1
@@ -51,6 +50,10 @@ module Api
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:email, :password)
+    end
+
+    def json_list(var)
+      { users: var.as_json(only: %i[email _id]) }
     end
   end
 end
