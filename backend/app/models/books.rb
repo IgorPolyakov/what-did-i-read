@@ -6,6 +6,7 @@ class Books
   field :url_cover, type: String
   field :description, type: String
   field :progress, type: Integer
+  field :year, type: Integer
   field :created_at, type: DateTime, default: Time.zone.now
   field :updated_at, type: DateTime, default: Time.zone.now
 
