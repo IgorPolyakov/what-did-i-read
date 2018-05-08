@@ -1,11 +1,10 @@
-﻿<div class="container">
-    <p><a href="#/login">Logout</a></p>
-    <div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
-        <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in vm.listBooks | orderBy : sortDate">
-            <!--Book card-->
-            <div class="card">
-                <!--Changing form-->
-                <span class="desc" ng-show="changeMod">
+<div class="container">
+  <div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
+    <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in vm.listBooks | orderBy : sortDate">
+      <!--Book card-->
+      <div class="card">
+        <!--Changing form-->
+        <span class="desc" ng-show="changeMod">
 							<form>
   								<div class="form-group">
     								<input ng-model="vm.ttl" type="text" class="form-control" placeholder="Book Title">
@@ -23,8 +22,8 @@
   								<button class="btn" ng-click="changeMod = !changeMod">Close</button>
 							</form>
 						</span>
-                <!--Deleting form-->
-                <span class="desc" ng-show="delMode">
+        <!--Deleting form-->
+        <span class="desc" ng-show="delMode">
 							<form>
   								<div class="form-group">
     								<h3>Are you sure to delete this one?</h3>
@@ -33,42 +32,42 @@
   								<button class="btn" ng-click="delMode = !delMode">No</button>
 							</form>
 						</span>
-                <img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title">{{book.title}}</h5>
-                    <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: {{book.progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="updated mt-2">
-                        <p>Last Updated
-                            <br> {{book.updated_at | date}}</p>
-                    </div>
-                    <span ng-click="changeMod = !changeMod" class="far fa-edit"></span>
-                    <span ng-click="delMode = !delMode" class="far fa-trash-alt"></span>
-                </div>
-            </div>
+        <img ng-src="{{book.url_cover}}" alt="" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{book.title}}</h5>
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" style="width: {{book.progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div class="updated mt-2">
+            <p>Last Updated
+              <br> {{book.updated_at | date}}</p>
+          </div>
+          <span ng-click="changeMod = !changeMod" class="far fa-edit"></span>
+          <span ng-click="delMode = !delMode" class="far fa-trash-alt"></span>
         </div>
-        <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center">
-            <!--Creating form-->
-            <div class="card">
-                <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                            <input ng-model="vm.title" type="text" class="form-control" placeholder="Book Title">
-                        </div>
-                        <div class="form-group">
-                            <input ng-model="vm.url_cover" type="text" class="form-control" placeholder="URL cover">
-                        </div>
-                        <div class="form-group">
-                            <input ng-model="vm.progress" type="text" class="form-control" placeholder="Progress is">
-                        </div>
-                        <div class="form-group">
-                            <textarea ng-model="vm.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
-                        </div>
-                        <button ng-click="vm.sendData()" type="button" class="btn btn-primary">Create</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center">
+      <!--Creating form-->
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <input ng-model="vm.title" type="text" class="form-control" placeholder="Book Title">
+            </div>
+            <div class="form-group">
+              <input ng-model="vm.url_cover" type="text" class="form-control" placeholder="URL cover">
+            </div>
+            <div class="form-group">
+              <input ng-model="vm.progress" type="text" class="form-control" placeholder="Progress is">
+            </div>
+            <div class="form-group">
+              <textarea ng-model="vm.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
+            </div>
+            <button ng-click="vm.sendData()" type="button" class="btn btn-primary">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
