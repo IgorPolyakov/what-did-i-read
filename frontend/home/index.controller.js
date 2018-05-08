@@ -22,7 +22,6 @@
 
 
         //POST request
-<<<<<<< HEAD
         vm.sendData = function() {
             var data = $.param({
                 book: {
@@ -32,18 +31,6 @@
                     description: vm.description
                 }
             });
-=======
-        function sendData(){
-            var data = $.param(
-            {
-                book: {
-            title: vm.title,
-            url_cover: vm.url_cover,
-            progress: vm.progress,
-            description: vm.description}
-            }   
-            );
->>>>>>> 54e9a51996720334ec55ed152379e8f0769d2280
 
             var config = {
                 headers: {
