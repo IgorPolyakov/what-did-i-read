@@ -1,4 +1,4 @@
-﻿(function () {
+﻿(function() {
     'use strict';
 
     angular
@@ -11,16 +11,28 @@
         initController();
 
         function initController() {
-            $http.get('http://185.40.31.149:9999/books.json') 
-            .success(function(data) { 
-              vm.listBooks = data;
-            }) 
-            .error(function(err) { 
-              return err; 
-            });
+            $http.get('http://185.40.31.149:9999/books.json')
+                .success(function(data) {
+                    vm.listBooks = data;
+                })
+                .error(function(err) {
+                    return err;
+                });
         }
 
+
         //POST request
+<<<<<<< HEAD
+        vm.sendData = function() {
+            var data = $.param({
+                book: {
+                    title: vm.title,
+                    url_cover: vm.url_cover,
+                    progress: vm.progress,
+                    description: vm.description
+                }
+            });
+=======
         function sendData(){
             var data = $.param(
             {
@@ -31,6 +43,7 @@
             description: vm.description}
             }   
             );
+>>>>>>> 54e9a51996720334ec55ed152379e8f0769d2280
 
             var config = {
                 headers: {
@@ -40,15 +53,63 @@
             };
 
             $http.post('http://185.40.31.149:9999/books', data, config)
-            .success(function(data, headers, config){
-                console.log('Goood');
-                $window.location.reload();
-            })
-            .error(function(){
-                console.log('Error');
+                .success(function(data, headers, config) {
+                    console.log('Goood');
+                    $window.location.reload();
+                })
+                .error(function() {
+                    console.log('Error');
+                });
+        }
+
+        //PUT request
+        vm.changeData = function(id) {
+            var data = $.param({
+                book: {
+                    title: vm.ttl,
+                    url_cover: vm.url_c,
+                    progress: vm.prog,
+                    description: vm.desc
+                }
             });
 
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json'
+                }
+            };
+
+            $http.put('http://185.40.31.149:9999/books/' + id, data, config)
+                .success(function(data, headers, config) {
+                    console.log('Goood');
+                    $window.location.reload();
+                })
+                .error(function() {
+                    console.log('Error');
+                });
         }
+
+        //DELETE request
+        vm.deleteData = function(id) {
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json'
+                }
+            };
+
+            $http.delete('http://185.40.31.149:9999/books/' + id, config)
+                .success(function(config) {
+                    console.log('Goood');
+                    $window.location.reload();
+                })
+                .error(function() {
+                    console.log('Error');
+                });
+        }
+
     }
 
 })();

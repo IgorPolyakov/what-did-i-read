@@ -24,7 +24,7 @@
                     $location.path('/');
                 } else {
                     vm.error = 'Email or password is incorrect';
-                    vm.loading = false;
+                    vm.loading = true;
                 }
             });
         };
