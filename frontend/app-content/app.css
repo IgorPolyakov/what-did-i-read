@@ -15,6 +15,14 @@
 	-o-transition: all .05s;
 	transition: all .05s;
 }
+.card-img-container{
+	height: 300px;
+}
 .card-img-top{
-	height: 253px;
+	height: 100%;
+	width: 69%;
+}
+.card-title{
+	white-space: nowrap;
+	overflow: hidden;
 }
