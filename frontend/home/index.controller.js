@@ -7,7 +7,7 @@
 
     function Controller($http, $window) {
         var vm = this;
-
+        
         initController();
 
         function initController() {
@@ -19,7 +19,7 @@
                     return err;
                 });
         }
-
+        
 
         //POST request
         vm.sendData = function() {
