@@ -14,7 +14,7 @@ require 'mina/rbenv' # for rbenv support. (https://rbenv.org)
 set :application_name, 'what-did-i-read'
 set :domain, '185.40.31.149'
 set :deploy_to, '/home/user/what-did-i-read'
-set :repository, 'git@github.com:IgorPolyakov/what-did-i-read.git'
+set :repository, 'https://github.com/IgorPolyakov/what-did-i-read.git'
 set :branch, 'master'
 
 # Optional settings:
