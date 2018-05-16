@@ -7,11 +7,11 @@
 
     function Controller($http, $window) {
         var vm = this;
-        
+
         initController();
 
         function initController() {
-            $http.get('http://185.40.31.149:9999/books.json')
+            $http.get('http://159.65.115.107:9999/books.json')
                 .success(function(data) {
                     vm.listBooks = data;
                 })
@@ -19,7 +19,7 @@
                     return err;
                 });
         }
-        
+
 
         //POST request
         vm.sendData = function() {
@@ -39,7 +39,7 @@
                 }
             };
 
-            $http.post('http://185.40.31.149:9999/books', data, config)
+            $http.post('http://159.65.115.107:9999/books', data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     $window.location.reload();
@@ -67,7 +67,7 @@
                 }
             };
 
-            $http.put('http://185.40.31.149:9999/books/' + id, data, config)
+            $http.put('http://159.65.115.107:9999/books/' + id, data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     $window.location.reload();
@@ -87,7 +87,7 @@
                 }
             };
 
-            $http.delete('http://185.40.31.149:9999/books/' + id, config)
+            $http.delete('http://159.65.115.107:9999/books/' + id, config)
                 .success(function(config) {
                     console.log('Goood');
                     $window.location.reload();

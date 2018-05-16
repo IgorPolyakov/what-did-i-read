@@ -14,7 +14,7 @@
         return service;
 
         function Login(email, password, callback) {
-            $http.post('http://185.40.31.149:9999/auth', { email: email, password: password })
+            $http.post('http://159.65.115.107:9999/auth', { email: email, password: password })
                 .success(function (response) {
                     // login successful if there's a token in the response
                     if (response.token) {

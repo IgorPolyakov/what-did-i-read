@@ -13,7 +13,7 @@ require 'mina/rbenv' # for rbenv support. (https://rbenv.org)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'what-did-i-read'
-set :domain, '185.40.31.149'
+set :domain, '159.65.115.107'
 set :deploy_to, '/home/user/what-did-i-read'
 set :repository, 'https://github.com/IgorPolyakov/what-did-i-read.git'
 set :branch, 'master'
