@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'mina/bundler'
 require 'mina/rails'
 require 'mina/git'
 require 'mina/rbenv' # for rbenv support. (https://rbenv.org)
@@ -43,6 +44,8 @@ end
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
 task :setup do
   command %(rbenv install 2.5.1 --skip-existing)
+  command %(rbenv global 2.5.1)
+  command %(gem install bundler)
 end
 
 desc 'Deploys the current version to the server.'
