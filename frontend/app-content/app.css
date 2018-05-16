@@ -26,3 +26,12 @@
 	white-space: nowrap;
 	overflow: hidden;
 }
+.card-title:hover{
+	white-space: normal;
+	background: #fff;
+	cursor: pointer;
+}
+.card-title:active{
+	white-space: normal;
+	background: #fff;
+}

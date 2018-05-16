@@ -4,10 +4,6 @@
 <div class="container">
     <div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
         <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5">
-            <div class="alert alert-info">
-                email: alex@mail.com
-                <br /> Password: 123456
-            </div>
             <h2>Login</h2>
             <form name="form" ng-submit="form.$valid && vm.login()" novalidate>
                 <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.email.$invalid }">
