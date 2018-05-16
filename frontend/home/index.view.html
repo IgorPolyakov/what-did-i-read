@@ -13,6 +13,9 @@
             </li>
         </ul>
         <ul class="navbar-nav">
+            <li>
+              <input ng-model="searchBox" type="text" class="form-control" placeholder="Search" name="q">
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#/login">Logout</a>
             </li>
@@ -21,7 +24,7 @@
 </nav>
 <div class="container">
     <div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
-        <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in vm.listBooks | orderBy : sortDate">
+        <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in vm.listBooks | filter: searchBox : orderBy: updated_at ">
             <!--Book card-->
             <div class="card">
                 <!--Changing form-->
