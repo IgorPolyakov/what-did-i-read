@@ -31,16 +31,16 @@
             <span class="desc" ng-show="changeMod">
               <form>
                   <div class="form-group">
-                    <input ng-model="vm.ttl" type="text" class="form-control" placeholder="Book Title">
+                    <input ng-model="vm.currentBook.title" type="text" class="form-control" placeholder="Book Title">
                   </div>
                 <div class="form-group">
-                    <input ng-model="vm.url_c" type="text" class="form-control" placeholder="URL cover">
+                    <input ng-model="vm.currentBook.url_cover" type="text" class="form-control" placeholder="URL cover">
                   </div>
                   <div class="form-group">
-                    <input ng-model="vm.prog" type="text" class="form-control" placeholder="Progress is">
+                    <input ng-model="vm.currentBook.progress" type="number" class="form-control" placeholder="Progress is">
                   </div>
                   <div class="form-group">
-                    <textarea ng-model="vm.desc" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
+                    <textarea ng-model="vm.currentBook.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
                   </div>
                   <button ng-click="vm.changeData(book._id.$oid)" type="button" class="btn btn-primary">Update</button>
                   <button class="btn" ng-click="changeMod = !changeMod">Close</button>
@@ -68,7 +68,7 @@
                         <p>Last Updated
                             <br> {{book.updated_at | date}}</p>
                     </div>
-                    <span ng-click="changeMod = !changeMod" class="far fa-edit"></span>
+                    <span ng-click="changeMod = !changeMod; vm.prepareInputs(book._id.$oid)" class="far fa-edit"></span>
                     <span ng-click="delMode = !delMode" class="far fa-trash-alt"></span>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.progress.$invalid }">
-                            <input type="text" name="progress" class="form-control" ng-model="vm.progress" placeholder="Progress" ng-maxlength="2" required />
+                            <input type="number" name="progress" class="form-control" ng-model="vm.progress" placeholder="Progress" ng-maxlength="2" required />
                             <div ng-messages="form.$submitted && form.progress.$error" class="help-block">
                                 <div ng-message="required">Progress is required</div>
                                 <div ng-message="maxlength">Up to 100</div>

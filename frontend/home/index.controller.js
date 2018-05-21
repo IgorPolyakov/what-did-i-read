@@ -5,12 +5,15 @@
         .module('app')
         .controller('Home.IndexController', Controller);
 
-    function Controller($http, $window) {
+    function Controller($http) {
         var vm = this;
-
         initController();
 
         function initController() {
+          getBooks();
+        }
+
+        function getBooks() {
             $http.get('http://159.65.115.107:9999/books.json')
                 .success(function(data) {
                     vm.listBooks = data;
@@ -19,7 +22,6 @@
                     return err;
                 });
         }
-
 
         //POST request
         vm.sendData = function() {
@@ -42,24 +44,35 @@
             $http.post('http://159.65.115.107:9999/books', data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
-                    $window.location.reload();
+                    getBooks();
                 })
                 .error(function() {
                     console.log('Error');
                 });
         }
 
+
+        //assign vars to update
+        vm.prepareInputs = function(id){
+          for(var i in vm.listBooks){
+            if (vm.listBooks[i]._id.$oid == id) {
+              vm.currentBook= {
+                title: vm.listBooks[i].title,
+                url_cover: vm.listBooks[i].url_cover,
+                progress: vm.listBooks[i].progress,
+                description: vm.listBooks[i].description
+              }
+              console.log(vm.currentBook);
+            };
+          };
+        };
+
         //PUT request
         vm.changeData = function(id) {
+            var book = vm.currentBook;
             var data = $.param({
-                book: {
-                    title: vm.ttl,
-                    url_cover: vm.url_c,
-                    progress: vm.prog,
-                    description: vm.desc
-                }
+              book
             });
-
             var config = {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -70,7 +83,7 @@
             $http.put('http://159.65.115.107:9999/books/' + id, data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
-                    $window.location.reload();
+                    getBooks();
                 })
                 .error(function() {
                     console.log('Error');
@@ -90,7 +103,7 @@
             $http.delete('http://159.65.115.107:9999/books/' + id, config)
                 .success(function(config) {
                     console.log('Goood');
-                    $window.location.reload();
+                    getBooks();
                 })
                 .error(function() {
                     console.log('Error');
