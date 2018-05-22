@@ -65,7 +65,7 @@ task :deploy do
 
     on :launch do
       in_path(fetch(:current_path)) do
-        command %(sudo systemctl restart what-did-i-read-master.service)
+        command %(sudo systemctl restart what-did-i-read.service)
       end
     end
   end
