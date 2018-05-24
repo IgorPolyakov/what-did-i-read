@@ -46,6 +46,7 @@
                     console.log('Goood');
                     clearInputs()
                     getBooks();
+                    $('#exampleModalCenter').modal('hide')
                 })
                 .error(function() {
                     console.log('Error');

@@ -23,6 +23,23 @@
     </div>
 </nav>
 <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+        <h4 class="alert-heading">Very well!</h4>
+        <p>You made the first step to our web-service. Fill the card with your favorite and still didn't read the book to remember everything.</p>
+        <hr>
+        <p class="mb-0">Good look and send us your feedback to <a href="mailto:info@sibdev.io">info@sibdev.io</a></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    Add a new book
+  </button>
     <div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
         <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in vm.listBooks | filter: searchBox : orderBy: updated_at ">
             <!--Book card-->
@@ -73,42 +90,55 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center">
             <!--Creating form-->
-            <div class="card">
-                <div class="card-body">
-                    <form name="form" ng-submit="form.$valid && vm.sendData()" novalidate>
-                        <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.title.$invalid }">
-                            <input type="text" name="title" class="form-control" ng-model="vm.title" placeholder="Title" required />
-                            <div ng-messages="form.$submitted && form.title.$error" class="help-block">
-                                <div ng-message="required">Title is required</div>
-                            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Create a new book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <form name="form" ng-submit="form.$valid && vm.sendData()" novalidate>
+                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.title.$invalid }">
+                                    <input type="text" name="title" class="form-control" ng-model="vm.title" placeholder="Title" required />
+                                    <div ng-messages="form.$submitted && form.title.$error" class="help-block">
+                                        <div ng-message="required">Title is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.url_cover.$invalid }">
+                                    <input type="text" name="url_cover" class="form-control" ng-model="vm.url_cover" placeholder="URL Cover" required />
+                                    <div ng-messages="form.$submitted && form.url_cover.$error" class="help-block">
+                                        <div ng-message="required">URL cover is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.progress.$invalid }">
+                                    <input type="number" name="progress" class="form-control" ng-model="vm.progress" placeholder="Progress" ng-maxlength="2" required />
+                                    <div ng-messages="form.$submitted && form.progress.$error" class="help-block">
+                                        <div ng-message="required">Progress is required</div>
+                                        <div ng-message="maxlength">Up to 100</div>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.description.$invalid }">
+                                    <input type="text" name="description" class="form-control" ng-model="vm.description" placeholder="Description" required />
+                                    <div ng-messages="form.$submitted && form.description.$error" class="help-block">
+                                        <div ng-message="required">Description is required</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Create</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.url_cover.$invalid }">
-                            <input type="text" name="url_cover" class="form-control" ng-model="vm.url_cover" placeholder="URL Cover" required />
-                            <div ng-messages="form.$submitted && form.url_cover.$error" class="help-block">
-                                <div ng-message="required">URL cover is required</div>
-                            </div>
-                        </div>
-                        <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.progress.$invalid }">
-                            <input type="number" name="progress" class="form-control" ng-model="vm.progress" placeholder="Progress" ng-maxlength="2" required />
-                            <div ng-messages="form.$submitted && form.progress.$error" class="help-block">
-                                <div ng-message="required">Progress is required</div>
-                                <div ng-message="maxlength">Up to 100</div>
-                            </div>
-                        </div>
-                        <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.description.$invalid }">
-                            <input type="text" name="description" class="form-control" ng-model="vm.description" placeholder="Description" required />
-                            <div ng-messages="form.$submitted && form.description.$error" class="help-block">
-                                <div ng-message="required">Description is required</div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary">Create</button>
-                        </div>
-                    </form>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
-        </div>
     </div>
 </div>

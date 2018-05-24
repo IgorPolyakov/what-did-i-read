@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#/signup">SignUp</a>
+                <a class="nav-link" href="#/login">Login</a>
             </li>
         </ul>
     </div>
@@ -14,8 +14,8 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5">
-            <h2>Login</h2>
-            <form name="form" ng-submit="form.$valid && vm.login()" novalidate>
+            <h2>SignUp</h2>
+            <form name="form" ng-submit="form.$valid && vm.signup()" novalidate>
                 <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.email.$invalid }">
                     <label for="email">Email</label>
                     <input type="text" name="email" class="form-control" ng-model="vm.email" required />
@@ -31,11 +31,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button ng-disabled="vm.loading" class="btn btn-primary">Login</button>
+                    <button ng-disabled="vm.loading" class="btn btn-primary">SignUp</button>
                     <img ng-if="vm.loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
                 </div>
                 <div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
             </form>
-        </div>
+          </div>
     </div>
 </div>
