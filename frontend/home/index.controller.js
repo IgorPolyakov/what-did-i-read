@@ -44,6 +44,7 @@
             $http.post('http://159.65.115.107:9999/books', data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
+                    clearInputs()
                     getBooks();
                 })
                 .error(function() {
@@ -51,6 +52,13 @@
                 });
         }
 
+        //Clear inputs in the Creating form
+        function clearInputs(){
+          vm.title = '';
+          vm.url_cover = '';
+          vm.progress = '';
+          vm.description = '';
+        }
 
         //assign vars to update
         vm.prepareInputs = function(id){
