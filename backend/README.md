@@ -1,4 +1,6 @@
-Fake data
+## Работа с API через `CURL`
+
+* Зарегистрировать пользователя
 ```
-100.times {Book.create!(title: FFaker::Book.title, url_cover: FFaker::Book.cover, description: FFaker::Book.description, progress: rand(0..100))}
+curl -v -H "Accept: application/json" -H "Content-type: application/json" POST -d '{"user": {"login": "530_kiv", "password":"kek" }}' http://159.65.115.107:9999/users
 ```
