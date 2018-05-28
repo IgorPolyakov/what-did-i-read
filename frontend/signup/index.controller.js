@@ -29,7 +29,7 @@
                   'Accept': 'application/json'
               }
           };
-          $http.post('http://159.65.115.107:9999/users', data, config)
+          $http.post('https://whatdidiread.tk/api/users', data, config)
               .success(function(data, headers, config) {
                   login();
               })
