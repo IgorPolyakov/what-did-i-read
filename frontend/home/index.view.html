@@ -1,144 +1,186 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#/">What Did I Read</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Books <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Users</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav">
-            <li>
-              <input ng-model="searchBox" type="text" class="form-control" placeholder="Search" name="q">
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#/login">Logout</a>
-            </li>
-        </ul>
+<section class="home fill-viewport orange lighten-1">
+  <div class="row menu_row">
+    <div class="navbar-fixed">
+      <nav class="orange darken-1">
+        <div class="nav-wrapper">
+
+          <div class="container">
+            <a href="#!" class="brand-logo">
+              <img class="logo" src="img/logo_white_small.png" alt="">
+            </a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><img class="ava" src="img/avatar.png" alt=""></li>
+              <li><a href="#/login">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </div>
-</nav>
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
-        <h4 class="alert-heading">Very well!</h4>
-        <p>You made the first step to our web-service. Fill the card with your favorite and still didn't read the book to remember everything.</p>
-        <hr>
-        <p class="mb-0">Good look and send us your feedback to <a href="mailto:info@sibdev.io">info@sibdev.io</a></p>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+    <ul class="sidenav" id="mobile-demo">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="img/bg_slide_menu.jpg">
+          </div>
+          <a href="#user"><img class="circle" src="img/avatar.png"></a>
+          <a href="#name"><span class="white-text name">John Doe</span></a>
+          <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div>
+      </li>
+      <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+      <li><a href="#!">Second Link</a></li>
+      <li>
+        <div class="divider"></div>
+      </li>
+      <li><a class="subheader">Subheader</a></li>
+      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="hide-on-med-and-up fixed-action-btn">
+      <a class="btn-floating btn-large orange darken-3" onclick="addBook()">
+            <i class="large material-icons">add</i>
+          </a>
+    </div>
+    <div class="row">
+      <div class="col s12 m4 offset-m4 center hide-on-small-only">
+        <a href="#createModal" class="waves-effect waves-light orange darken-3 btn modal-trigger"><i class="material-icons left">add</i>new book</a>
+      </div>
+      <!-- Creating Modal -->
+      <div id="createModal" class="modal">
+        <div class="row">
+          <form class="col s12">
+            <div class="modal-content">
+              <h5>Create Book</h5>
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">book</i>
+                  <input id="create_title" type="text" class="validate" ng-model="vm.title">
+                  <label for="create_title">Title</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">link</i>
+                  <input id="create_url" type="tel" class="validate" ng-model="vm.url_cover">
+                  <label for="create_url">Url Cover</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">trending_up</i>
+                  <input id="create_progress" type="number" class="validate" ng-model="vm.progress">
+                  <label for="create_progress">Progress</label>
+                </div>
+                <div class="input-field col s12 m6">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input id="create_author" type="tel" class="validate">
+                  <label for="create_author">Author</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">description</i>
+                  <inpur id="create_description" ng-model="vm.description">
+                  <label for="create_description">Description</label>
+                </div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class="modal-close orange darken-3 waves-effect waves-light btn" ng-click="vm.sendData() && addBook()">Create</a>
+              <a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!---->
+    </div>
+    <div class="row">
+      <div class="col s12 m3" ng-repeat="book in vm.listBooks">
+        <div class="card hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{{book.url_cover}}">
+          </div>
+          <div class="card-content">
+            <span class="card-title grey-text text-darken-4 tooltipped truncate" data-position="top" data-tooltip="{{book.title}}">{{book.title}}</span>
+            <div class="progress">
+              <div class="determinate tooltipped" data-position="bottom" data-tooltip="{{book.progress}} / 100" style="width: {{book.progress}}%"></div>
+            </div>
+            <div class="chip">
+              fantastic
+            </div>
+            <div class="chip">
+              tale
+            </div>
+            <div class='dropdown-trigger right' data-target='dropdown{{book._id.$oid}}'><i class="material-icons">more_vert</i></div>
+            <ul id='dropdown{{book._id.$oid}}' class='dropdown-content'>
+              <li><a href="#editModal{{book._id.$oid}}" class="modal-trigger"><i class="material-icons right" ng-click="vm.prepareInputs(book._id.$oid)">edit</i></a></li>
+              <li><a href="#deleteModal{{book._id.$oid}}" class="modal-trigger"><i class="material-icons right">delete</i></a></li>
+            </ul>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i>{{book.title}}</span>
+            <p>{{book.description}}</p>
+          </div>
+        </div>
+        <!-- Deleting Modal -->
+        <div id="deleteModal{{book._id.$oid}}" class="modal">
+          <div class="modal-content">
+            <h5>Are you sure?</h5>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close orange darken-3 waves-effect waves-light btn">No</a>
+            <a href="#!" class="modal-close waves-effect waves-light btn-flat" ng-click="vm.deleteData(book._id.$oid) && deleteBook()">Yes</a>
+          </div>
+        </div>
+        <!-- Editing Modal -->
+        <div id="editModal{{book._id.$oid}}" class="modal">
+          <div class="row">
+            <form action="" class="col s12">
+              <div class="modal-content">
+                <h5>Update Book</h5>
+                <div class="row">
+                  <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">book</i>
+                    <input id="edit_title" type="text" class="validate" ng-model="vm.currentBook.title">
+                    <label for="iedit_title">Title</label>
+                  </div>
+                  <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">link</i>
+                    <input id="edit_url" type="tel" class="validate" ng-model="vm.currentBook.url_cover">
+                    <label for="edit_url">Url Cover</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">trending_up</i>
+                    <input id="edit_progress" type="number" class="validate" ng-model="vm.currentBook.progress">
+                    <label for="edit_progress">Progress</label>
+                  </div>
+                  <div class="input-field col s12 m6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="edit_author" type="tel" class="validate">
+                    <label for="edit_author">Author</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">description</i>
+                    <input id="edit_description" type="tel" class="validate" ng-model="vm.currentBook.description">
+                    <label for="edit_description">Description</label>
+                  </div>
+                </div>
+
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-close orange darken-3 waves-effect waves-light btn" ng-click="vm.changeData(book._id.$oid) && editBook()">Update</a>
+                <a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!---->
       </div>
     </div>
   </div>
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-    Add a new book
-  </button>
-    <div class="row" ng-init="sortDate = 'updated_at'" ng-model="sortDate">
-        <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5 text-center" ng-repeat="book in vm.listBooks | filter: searchBox : orderBy: updated_at ">
-            <!--Book card-->
-            <div class="card">
-                <!--Changing form-->
-            <span class="desc" ng-show="changeMod">
-              <form>
-                  <div class="form-group">
-                    <input ng-model="vm.currentBook.title" type="text" class="form-control" placeholder="Book Title">
-                  </div>
-                <div class="form-group">
-                    <input ng-model="vm.currentBook.url_cover" type="text" class="form-control" placeholder="URL cover">
-                  </div>
-                  <div class="form-group">
-                    <input ng-model="vm.currentBook.progress" type="number" class="form-control" placeholder="Progress is">
-                  </div>
-                  <div class="form-group">
-                    <textarea ng-model="vm.currentBook.description" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Description is ..."></textarea>
-                  </div>
-                  <button ng-click="vm.changeData(book._id.$oid)" type="button" class="btn btn-primary">Update</button>
-                  <button class="btn" ng-click="changeMod = !changeMod">Close</button>
-              </form>
-            </span>
-                <!--Deleting form-->
-            <span class="desc" ng-show="delMode">
-              <form>
-                  <div class="form-group">
-                    <h3>Are you sure to delete this one?</h3>
-                  </div>
-                  <button ng-click="vm.deleteData(book._id.$oid)" type="button" class="btn btn-primary">Yes</button>
-                  <button class="btn" ng-click="delMode = !delMode">No</button>
-              </form>
-            </span>
-                <div class="card-img-container">
-                    <img ng-src="{{book.url_cover}}" alt="" class="card-img-top pt-4">
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title" title="{{book.title}}">{{book.title}}</h5>
-                    <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: {{book.progress}}%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <div class="updated mt-2">
-                        <p>Last Updated
-                            <br> {{book.updated_at | date}}</p>
-                    </div>
-                    <span ng-click="changeMod = !changeMod; vm.prepareInputs(book._id.$oid)" class="far fa-edit"></span>
-                    <span ng-click="delMode = !delMode" class="far fa-trash-alt"></span>
-                </div>
-            </div>
-        </div>
-            <!--Creating form-->
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Create a new book</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="card">
-                        <div class="card-body">
-                            <form name="form" ng-submit="form.$valid && vm.sendData()" novalidate>
-                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.title.$invalid }">
-                                    <input type="text" name="title" class="form-control" ng-model="vm.title" placeholder="Title" required />
-                                    <div ng-messages="form.$submitted && form.title.$error" class="help-block">
-                                        <div ng-message="required">Title is required</div>
-                                    </div>
-                                </div>
-                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.url_cover.$invalid }">
-                                    <input type="text" name="url_cover" class="form-control" ng-model="vm.url_cover" placeholder="URL Cover" required />
-                                    <div ng-messages="form.$submitted && form.url_cover.$error" class="help-block">
-                                        <div ng-message="required">URL cover is required</div>
-                                    </div>
-                                </div>
-                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.progress.$invalid }">
-                                    <input type="number" name="progress" class="form-control" ng-model="vm.progress" placeholder="Progress" ng-maxlength="2" required />
-                                    <div ng-messages="form.$submitted && form.progress.$error" class="help-block">
-                                        <div ng-message="required">Progress is required</div>
-                                        <div ng-message="maxlength">Up to 100</div>
-                                    </div>
-                                </div>
-                                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.description.$invalid }">
-                                    <input type="text" name="description" class="form-control" ng-model="vm.description" placeholder="Description" required />
-                                    <div ng-messages="form.$submitted && form.description.$error" class="help-block">
-                                        <div ng-message="required">Description is required</div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Create</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-    </div>
-</div>
+</section>

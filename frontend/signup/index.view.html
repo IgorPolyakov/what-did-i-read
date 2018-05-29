@@ -1,41 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#/">What Did I Read</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#/login">Login</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div class="container">
+<section class="login fill-viewport  teal valign-wrapper">
+  <div class="container">
     <div class="row">
-        <div class="col-12 col-sm-6 col-md-3 mx-auto mt-5">
-            <h2>SignUp</h2>
-            <form name="form" ng-submit="form.$valid && vm.signup()" novalidate>
-                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.email.$invalid }">
-                    <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" ng-model="vm.email" required />
-                    <div ng-messages="form.$submitted && form.email.$error" class="help-block">
-                        <div ng-message="required">Email is required</div>
-                    </div>
-                </div>
-                <div class="form-group" ng-class="{ 'has-error': form.$submitted && form.password.$invalid }">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" ng-model="vm.password" required />
-                    <div ng-messages="form.$submitted && form.password.$error" class="help-block">
-                        <div ng-message="required">Password is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <button ng-disabled="vm.loading" class="btn btn-primary">SignUp</button>
-                    <img ng-if="vm.loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                </div>
-                <div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
-            </form>
-          </div>
+      <div class="col s12">
+        <div class="center-align">
+          <img src="img/logo_white_small.png" class="login-logo" alt="">
+          <form class="col s12">
+            <div class="row eml">
+              <div class="input-field col s4 offset-s4">
+                <input id="email" type="email" class="validate"ng-model="vm.email">
+                <label for="email">Email</label>
+                <span class="helper-text" data-error="wrong" data-success="right"></span>
+              </div>
+            </div>
+            <div class="row pass">
+              <div class="input-field col s4 offset-s4">
+                <input id="password" type="password" ng-model="vm.password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4 offset-s4">
+                <a href="" class="waves-effect waves-light btn teal darken-1 sub" ng-click="vm.signup()">signup</a>
+              </div>
+            </div>
+          </form><br>
+          <a href="#/login" class="to-signup">Get Back</a>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</section>
