@@ -29,7 +29,7 @@
                   'Accept': 'application/json'
               }
           };
-          $http.post('https://whatdidiread.tk/api/users', data, config)
+          $http.post('https://inread.online/api/users', data, config)
               .success(function(data, headers, config) {
                   login();
               })

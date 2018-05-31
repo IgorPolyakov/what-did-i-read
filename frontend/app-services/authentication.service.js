@@ -14,7 +14,7 @@
         return service;
 
         function Login(email, password, callback) {
-            $http.post('https://whatdidiread.tk/api/auth', { email: email, password: password })
+            $http.post('https://inread.online/api/auth', { email: email, password: password })
                 .success(function (response) {
                     // login successful if there's a token in the response
                     if (response.token) {

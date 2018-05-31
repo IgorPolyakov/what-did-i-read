@@ -14,7 +14,7 @@
         }
 
         function getBooks() {
-            $http.get('https://whatdidiread.tk/api/books')
+            $http.get('https://inread.online/api/books')
                 .success(function(data) {
                     vm.listBooks = data;
                 })
@@ -41,7 +41,7 @@
                 }
             };
 
-            $http.post('https://whatdidiread.tk/api/books', data, config)
+            $http.post('https://inread.online/api/books', data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     clearInputs()
@@ -89,7 +89,7 @@
                 }
             };
 
-            $http.put('https://whatdidiread.tk/api/books/' + id, data, config)
+            $http.put('https://inread.online/api/books/' + id, data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     getBooks();
@@ -109,7 +109,7 @@
                 }
             };
 
-            $http.delete('https://whatdidiread.tk/api/books/' + id, config)
+            $http.delete('https://inread.online/api/books/' + id, config)
                 .success(function(config) {
                     console.log('Goood');
                     getBooks();
