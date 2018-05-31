@@ -3,7 +3,7 @@
   overflow: hidden;
 }
 .main{
-  background: url(img/logo_white.png) 40% 0%/contain no-repeat;
+  background: url(../img/logo_white.png) 40% 0%/contain no-repeat;
 }
 .rem,
 .tb,

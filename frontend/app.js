@@ -23,6 +23,11 @@
               controller: 'Signup.IndexController',
               controllerAs: 'vm'
             })
+            .when('/start', {
+              templateUrl: 'start/index.view.html',
+              controller: 'Start.IndexController',
+              controllerAs: 'vm'
+            })
             .otherwise({
                 redirectTo: '/'
             });
@@ -36,7 +41,7 @@
 
         // redirect to login page if not logged in and trying to access a restricted page
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            var publicPages = ['/login','/signup'];
+            var publicPages = ['/login','/signup','/start'];
             var restrictedPage = publicPages.indexOf($location.path()) === -1;
             if (restrictedPage && !$localStorage.currentUser) {
                 $location.path('/login');
