@@ -8,7 +8,7 @@
 
     function config($routeProvider) {
         $routeProvider
-            .when('/', {
+            .when('/home', {
                 templateUrl: 'home/index.view.html',
                 controller: 'Home.IndexController',
                 controllerAs: 'vm'
@@ -23,13 +23,13 @@
               controller: 'Signup.IndexController',
               controllerAs: 'vm'
             })
-            .when('/start', {
+            .when('/', {
               templateUrl: 'start/index.view.html',
               controller: 'Start.IndexController',
               controllerAs: 'vm'
             })
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/home'
             });
     }
 
@@ -41,10 +41,10 @@
 
         // redirect to login page if not logged in and trying to access a restricted page
         $rootScope.$on('$locationChangeStart', function (event, next, current) {
-            var publicPages = ['/login','/signup','/start'];
+            var publicPages = ['/login','/signup','/'];
             var restrictedPage = publicPages.indexOf($location.path()) === -1;
             if (restrictedPage && !$localStorage.currentUser) {
-                $location.path('/login');
+                $location.path('/');
             }
         });
     }

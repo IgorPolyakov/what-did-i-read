@@ -21,10 +21,9 @@
             vm.loading = true;
             AuthenticationService.Login(vm.email, vm.password, function (result) {
                 if (result === true) {
-                    $location.path('/');
-                } else {
-                    vm.error = 'Email or password is incorrect';
-                    vm.loading = true;
+                    $location.path('/home');
+                } else if (result == '404 not found') {
+                    alert('Wrong Credential');
                 }
             });
         };
