@@ -39,13 +39,13 @@
   </div>
   <div class="container">
     <div class="hide-on-med-and-up fixed-action-btn">
-      <a class="btn-floating btn-large orange darken-3" onclick="addBook()">
+      <a class="btn-floating btn-large orange darken-3" id="callCreate1">
             <i class="large material-icons">add</i>
           </a>
     </div>
     <div class="row">
       <div class="col s12 m4 offset-m4 center hide-on-small-only">
-        <a href="#createModal" class="waves-effect waves-light orange darken-3 btn modal-trigger"><i class="material-icons left">add</i>new book</a>
+        <a href="" class="waves-effect waves-light orange darken-3 btn" id="callCreate2"><i class="material-icons left">add</i>new book</a>
       </div>
       <!-- Creating Modal -->
       <div id="createModal" class="modal">
@@ -80,15 +80,15 @@
               <div class="row">
                 <div class="input-field col s12">
                   <i class="material-icons prefix">description</i>
-                  <input id="create_description" ng-model="vm.description">
+                  <input id="create_description"type="text" ng-model="vm.description">
                   <label for="create_description">Description</label>
                 </div>
               </div>
 
             </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-close orange darken-3 waves-effect waves-light btn" ng-click="vm.sendData() && addBook()">Create</a>
-              <a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+              <a href="" id="closeCreate1" class="orange darken-3 waves-effect waves-light btn" ng-click="vm.sendData() && addBook()">Create</a>
+              <a href="" id="closeCreate2" class="waves-effect waves-light btn-flat">Cancel</a>
             </div>
           </form>
         </div>
@@ -112,8 +112,8 @@
             <div class="chip">
               tale
             </div>
-            <div class='dropdown-trigger right' data-target='dropdown{{book._id.$oid}}'><i class="material-icons">more_vert</i></div>
-            <ul id='dropdown{{book._id.$oid}}' class='dropdown-content'>
+            <div class='dropdown-trigger right' id="openDrop"><i class="material-icons">more_vert</i></div>
+            <ul id='drop1' class='dropdown-content'>
               <li><a href="#editModal{{book._id.$oid}}" class="modal-trigger"><i class="material-icons right" ng-click="vm.prepareInputs(book._id.$oid)">edit</i></a></li>
               <li><a href="#deleteModal{{book._id.$oid}}" class="modal-trigger"><i class="material-icons right">delete</i></a></li>
             </ul>
@@ -174,7 +174,7 @@
               </div>
               <div class="modal-footer">
                 <a href="#!" class="modal-close orange darken-3 waves-effect waves-light btn" ng-click="vm.changeData(book._id.$oid) && editBook()">Update</a>
-                <a href="#!" class="modal-close waves-effect waves-light btn-flat">Cancel</a>
+                <a href="" class="waves-effect waves-light btn-flat">Cancel</a>
               </div>
             </form>
           </div>

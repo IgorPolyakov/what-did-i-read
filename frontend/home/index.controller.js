@@ -40,13 +40,15 @@
                     'Accept': 'application/json'
                 }
             };
-
+            var addBook = function(){
+               M.toast({html: 'New Book Added'})
+            }
             $http.post('https://inread.online/api/books', data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     clearInputs()
                     getBooks();
-                    $('#exampleModalCenter').modal('hide')
+                    addBook();
                 })
                 .error(function() {
                     console.log('Error');

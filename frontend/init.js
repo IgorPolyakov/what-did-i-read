@@ -1,10 +1,27 @@
-M.AutoInit();
-var addBook = function(){
-   M.toast({html: 'New Book Added'})
-}
-var editBook = function(){
-   M.toast({html: 'Book Edited'})
-}
-var deleteBook = function(){
-   M.toast({html: 'Book Deleted'})
-}
+$(function(){
+  M.AutoInit();
+  var editBook = function(){
+     M.toast({html: 'Book Edited'})
+  }
+  var deleteBook = function(){
+     M.toast({html: 'Book Deleted'})
+  };
+  $('#openDrop').click(function(){
+    $('#drop1').css('display','block');
+    $('#drop1').css('z-index','99999');
+  });
+  $('#callCreate1').click(function(){
+    $('#createModal').css('display','block');
+    $('#createModal').css('z-index','99999');
+  });
+  $('#callCreate2').click(function(){
+    $('#createModal').css('display','block');
+    $('#createModal').css('z-index','99999');
+  });
+  $('#closeCreate1').click(function(){
+    $('#createModal').css('display','none');
+  });
+  $('#closeCreate2').click(function(){
+    $('#createModal').css('display','none');
+  });
+});
