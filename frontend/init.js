@@ -6,10 +6,6 @@ $(function(){
   var deleteBook = function(){
      M.toast({html: 'Book Deleted'})
   };
-  $('#openDrop').click(function(){
-    $('#drop1').css('display','block');
-    $('#drop1').css('z-index','99999');
-  });
   $('#callCreate1').click(function(){
     $('#createModal').css('display','block');
     $('#createModal').css('z-index','99999');
