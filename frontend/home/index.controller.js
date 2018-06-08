@@ -22,7 +22,10 @@
                     return err;
                 });
         }
-
+        $('#callCreate1').click(function(){
+          $('#createModal').css('display','block');
+          $('#createModal').css('z-index','99999');
+        });
         //POST request
         vm.sendData = function() {
             var data = $.param({
