@@ -30,17 +30,6 @@
            M.toast({html: 'Book Deleted'})
         };
 
-        $('#callCreate2').click(function(){
-          $('#createModal').css('display','block');
-          $('#createModal').css('z-index','99999');
-        });
-        $('#closeCreate1').click(function(){
-          $('#createModal').css('display','none');
-        });
-        $('#closeCreate2').click(function(){
-          $('#createModal').css('display','none');
-        });
-
         vm.openCreatingModal = function(){
           $('#createModal').css('display','block');
           $('#createModal').css('z-index','99999');
