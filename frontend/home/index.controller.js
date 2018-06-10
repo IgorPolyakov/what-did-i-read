@@ -22,6 +22,13 @@
                     return err;
                 });
         }
+        M.AutoInit();
+        var editBook = function(){
+           M.toast({html: 'Book Edited'})
+        }
+        var deleteBook = function(){
+           M.toast({html: 'Book Deleted'})
+        };
         $('#callCreate1').click(function(){
           $('#createModal').css('display','block');
           $('#createModal').css('z-index','99999');
