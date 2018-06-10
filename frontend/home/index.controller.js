@@ -29,10 +29,7 @@
         var deleteBook = function(){
            M.toast({html: 'Book Deleted'})
         };
-        $('#callCreate1').click(function(){
-          $('#createModal').css('display','block');
-          $('#createModal').css('z-index','99999');
-        });
+
         $('#callCreate2').click(function(){
           $('#createModal').css('display','block');
           $('#createModal').css('z-index','99999');
@@ -43,6 +40,14 @@
         $('#closeCreate2').click(function(){
           $('#createModal').css('display','none');
         });
+
+        vm.openCreatingModal = function(){
+          $('#createModal').css('display','block');
+          $('#createModal').css('z-index','99999');
+        }
+        vm.closeCreatingModal = function(){
+          $('#createModal').css('display','none');
+        }
         //POST request
         vm.sendData = function() {
             var data = $.param({

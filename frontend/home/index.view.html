@@ -39,13 +39,13 @@
   </div>
   <div class="container">
     <div class="hide-on-med-and-up fixed-action-btn">
-      <a class="btn-floating btn-large orange darken-3" id="callCreate2">
+      <a class="btn-floating btn-large orange darken-3" ng-click="vm.openCreatingModal()">
             <i class="large material-icons">add</i>
           </a>
     </div>
     <div class="row">
       <div class="col s12 m4 offset-m4 center hide-on-small-only">
-        <a href="" class="waves-effect waves-light orange darken-3 btn" id="callCreate1"><i class="material-icons left">add</i>new book</a>
+        <a href="" class="waves-effect waves-light orange darken-3 btn" ng-click="vm.openCreatingModal()"><i class="material-icons left">add</i>new book</a>
       </div>
       <!-- Creating Modal -->
       <div id="createModal" class="modal">
@@ -87,8 +87,8 @@
 
             </div>
             <div class="modal-footer">
-              <a href="" id="closeCreate1" class="orange darken-3 waves-effect waves-light btn" ng-click="vm.sendData() && addBook()">Create</a>
-              <a href="" id="closeCreate2" class="waves-effect waves-light btn-flat">Cancel</a>
+              <a href="" class="orange darken-3 waves-effect waves-light btn" ng-click="vm.sendData() && addBook() && vm.closeCreatingModal()">Create</a>
+              <a href="" class="waves-effect waves-light btn-flat" ng-click="vm.closeCreatingModal()">Cancel</a>
             </div>
           </form>
         </div>
