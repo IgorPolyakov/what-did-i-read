@@ -26,6 +26,16 @@
           $('#createModal').css('display','block');
           $('#createModal').css('z-index','99999');
         });
+        $('#callCreate2').click(function(){
+          $('#createModal').css('display','block');
+          $('#createModal').css('z-index','99999');
+        });
+        $('#closeCreate1').click(function(){
+          $('#createModal').css('display','none');
+        });
+        $('#closeCreate2').click(function(){
+          $('#createModal').css('display','none');
+        });
         //POST request
         vm.sendData = function() {
             var data = $.param({
