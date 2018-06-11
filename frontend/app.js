@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngStorage'])
+        .module('app', ['ngRoute', 'ngStorage', 'ui.materialize'])
         .config(config)
         .run(run);
 

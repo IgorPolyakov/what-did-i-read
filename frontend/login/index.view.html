@@ -5,7 +5,7 @@
       <div class="col s12">
         <div class="center-align">
           <img src="img/logo_white_small.png" class="login-logo" alt="">
-          <form class="col s12">
+          <form class="col s12" ng-submit="vm.login()">
             <div class="row eml">
               <div class="input-field col s12 m4 offset-m4">
                 <input id="email" type="email" class="validate" ng-model="vm.email">
@@ -21,7 +21,7 @@
             </div>
             <div class="row">
               <div class="col s12 m4 offset-m4">
-                <a href="" class="waves-effect waves-light btn teal darken-3 sub" ng-click="vm.login()">login</a>
+                <input class="waves-effect waves-light btn teal darken-3 sub" type="submit" value="Login">
               </div>
             </div>
           </form><br>

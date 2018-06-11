@@ -39,13 +39,13 @@
   </div>
   <div class="container">
     <div class="hide-on-med-and-up fixed-action-btn">
-      <a class="btn-floating btn-large orange darken-3" ng-click="vm.openCreatingModal()">
+      <a class="btn-floating btn-large orange darken-3" data-target='createModal' modal>
             <i class="large material-icons">add</i>
           </a>
     </div>
     <div class="row">
       <div class="col s12 m4 offset-m4 center hide-on-small-only">
-        <a href="" class="waves-effect waves-light orange darken-3 btn" ng-click="vm.openCreatingModal()"><i class="material-icons left">add</i>new book</a>
+        <a href="" class="waves-effect waves-light orange darken-3 btn" data-target='createModal' modal><i class="material-icons left">add</i>new book</a>
       </div>
       <!-- Creating Modal -->
       <div id="createModal" class="modal">
@@ -87,8 +87,8 @@
 
             </div>
             <div class="modal-footer">
-              <a href="" class="orange darken-3 waves-effect waves-light btn" ng-click="vm.sendData() && addBook() && vm.closeCreatingModal()">Create</a>
-              <a href="" class="waves-effect waves-light btn-flat" ng-click="vm.closeCreatingModal()">Cancel</a>
+              <a href="" class="modal-action modal-close orange darken-3 waves-effect waves-light btn" ng-click="vm.sendData()" message="Book Added" duration="500" toast='click'>Create</a>
+              <a href="" class="modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
             </div>
           </form>
         </div>
@@ -102,9 +102,9 @@
             <img class="activator" src="{{book.url_cover}}">
           </div>
           <div class="card-content">
-            <span class="card-title grey-text text-darken-4 tooltipped truncate" data-position="top" data-tooltip="{{book.title}}">{{book.title}}</span>
+            <span tooltipped class="card-title grey-text text-darken-4 truncate" data-position="top" data-delay="20" data-tooltip="{{book.title}}">{{book.title}}</span>
             <div class="progress">
-              <div class="determinate tooltipped" data-position="bottom" data-tooltip="{{book.progress}} / 100" style="width: {{book.progress}}%"></div>
+              <div tooltipped class="determinate" data-position="bottom" data-delay="20" data-tooltip="{{book.progress}} / 100" style="width: {{book.progress}}%"></div>
             </div>
             <div class="chip">
               fantastic
@@ -112,10 +112,10 @@
             <div class="chip">
               tale
             </div>
-            <div class='dropdown-trigger right' id="openDrop"><i class="material-icons">more_vert</i></div>
-            <ul id='drop1' class='dropdown-content'>
-              <li><a href="#editModal{{book._id.$oid}}" class="modal-trigger"><i class="material-icons right" ng-click="vm.prepareInputs(book._id.$oid)">edit</i></a></li>
-              <li><a href="#deleteModal{{book._id.$oid}}" class="modal-trigger"><i class="material-icons right">delete</i></a></li>
+            <a href='' class='right' data-activates='drop{{book._id.$oid}}' dropdown data-hover="true"><i class="material-icons">more_vert</i></a>
+            <ul id='drop{{book._id.$oid}}' class='dropdown-content'>
+              <li><a href='' data-target='editModal{{book._id.$oid}}' modal><i class="material-icons right" ng-click="vm.prepareInputs(book._id.$oid)">edit</i></a></li>
+              <li><a href='' data-target='deleteModal{{book._id.$oid}}' modal><i class="material-icons right">delete</i></a></li>
             </ul>
           </div>
           <div class="card-reveal">
@@ -129,8 +129,8 @@
             <h5>Are you sure?</h5>
           </div>
           <div class="modal-footer">
-            <a href="#!" class="modal-close orange darken-3 waves-effect waves-light btn">No</a>
-            <a href="#!" class="modal-close waves-effect waves-light btn-flat" ng-click="vm.deleteData(book._id.$oid) && deleteBook()">Yes</a>
+            <a href='' class="modal-action modal-close orange darken-3 waves-effect waves-light btn">No</a>
+            <a href='' class="modal-action modal-close waves-effect waves-light btn-flat" ng-click="vm.deleteData(book._id.$oid)" message="Book Deleted" duration="500">Yes</a>
           </div>
         </div>
         <!-- Editing Modal -->
@@ -173,8 +173,8 @@
 
               </div>
               <div class="modal-footer">
-                <a href="#!" class="modal-close orange darken-3 waves-effect waves-light btn" ng-click="vm.changeData(book._id.$oid) && editBook()">Update</a>
-                <a href="" class="waves-effect waves-light btn-flat">Cancel</a>
+                <a href="" class="modal-action modal-close orange darken-3 waves-effect waves-light btn" ng-click="vm.changeData(book._id.$oid)" message="Book Edited" duration="500">Update</a>
+                <a href="" class="modal-action modal-close waves-effect waves-light btn-flat">Cancel</a>
               </div>
             </form>
           </div>

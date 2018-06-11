@@ -22,21 +22,7 @@
                     return err;
                 });
         }
-        M.AutoInit();
-        var editBook = function(){
-           M.toast({html: 'Book Edited'})
-        }
-        var deleteBook = function(){
-           M.toast({html: 'Book Deleted'})
-        };
 
-        vm.openCreatingModal = function(){
-          $('#createModal').css('display','block');
-          $('#createModal').css('z-index','99999');
-        }
-        vm.closeCreatingModal = function(){
-          $('#createModal').css('display','none');
-        }
         //POST request
         vm.sendData = function() {
             var data = $.param({
@@ -87,7 +73,6 @@
                 progress: vm.listBooks[i].progress,
                 description: vm.listBooks[i].description
               }
-              console.log(vm.currentBook);
             };
           };
         };
@@ -104,11 +89,15 @@
                     'Accept': 'application/json'
                 }
             };
+            var editBook = function(){
+               M.toast({html: 'Book Edited'})
+            };
 
             $http.put('https://inread.online/api/books/' + id, data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     getBooks();
+                    editBook();
                 })
                 .error(function() {
                     console.log('Error');
@@ -117,18 +106,20 @@
 
         //DELETE request
         vm.deleteData = function(id) {
-
             var config = {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Accept': 'application/json'
                 }
             };
-
+            var deleteBook = function(){
+               M.toast({html: 'Book Deleted'})
+            };
             $http.delete('https://inread.online/api/books/' + id, config)
                 .success(function(config) {
                     console.log('Goood');
                     getBooks();
+                    deleteBook();
                 })
                 .error(function() {
                     console.log('Error');

@@ -45,7 +45,7 @@
           var password = vm.password;
             AuthenticationService.Login(email, password, function (result) {
                 if (result === true) {
-                    $location.path('/');
+                    $location.path('/home');
                     alert('Welcome!');
                 } else {
                     alert('Login Error!');
