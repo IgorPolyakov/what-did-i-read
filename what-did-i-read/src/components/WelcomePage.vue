@@ -1,0 +1,25 @@
+<template>
+<section class="main fill-viewport pink darken-3 valign-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <div class="center-align">
+          <p class="rem">Remember</p>
+          <p class="tb">The books</p>
+          <p class="wy">What you</p>
+          <p class="read">Read</p>
+          <a href="#/login" class="waves-effect waves-light btn pink darken-4 bto">try out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</template>
+
+<script>
+
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
