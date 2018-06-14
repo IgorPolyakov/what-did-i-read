@@ -8,6 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bcrypt'
+gem 'jbuilder'
 gem 'jwt'
 gem 'bootsnap'
 gem 'mongoid'

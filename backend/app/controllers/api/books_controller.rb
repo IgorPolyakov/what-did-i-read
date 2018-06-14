@@ -6,8 +6,7 @@ module Api
     before_action :authenticate_user
 
     def index
-      book = current_user.book
-      render json: book, status: :ok
+      @books = current_user.book
     end
 
     def create
@@ -19,13 +18,11 @@ module Api
       end
     end
 
-    def show
-      render json: @book
-    end
+    def show; end
 
     def update
       if @book.update(parameters)
-        render json: @book
+        render status: :ok
       else
         render json: @book.errors, status: :unprocessable_entity
       end
