@@ -14,7 +14,7 @@
         }
 
         function getBooks() {
-            $http.get('https://inread.online/api/books')
+            $http.get('https://inread.online/api/books.json')
                 .success(function(data) {
                     vm.listBooks = data;
                 })
