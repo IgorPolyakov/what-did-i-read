@@ -43,7 +43,7 @@
             var addBook = function(){
                M.toast({html: 'New Book Added'})
             }
-            $http.post('https://inread.online/api/books', data, config)
+            $http.post('https://inread.online/api/books.json', data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     clearInputs()
@@ -66,7 +66,7 @@
         //assign vars to update
         vm.prepareInputs = function(id){
           for(var i in vm.listBooks){
-            if (vm.listBooks[i]._id.$oid == id) {
+            if (vm.listBooks[i].id == id) {
               vm.currentBook= {
                 title: vm.listBooks[i].title,
                 url_cover: vm.listBooks[i].url_cover,
@@ -93,7 +93,7 @@
                M.toast({html: 'Book Edited'})
             };
 
-            $http.put('https://inread.online/api/books/' + id, data, config)
+            $http.put('https://inread.online/api/books/' + id +'.json', data, config)
                 .success(function(data, headers, config) {
                     console.log('Goood');
                     getBooks();
@@ -115,7 +115,7 @@
             var deleteBook = function(){
                M.toast({html: 'Book Deleted'})
             };
-            $http.delete('https://inread.online/api/books/' + id, config)
+            $http.delete('https://inread.online/api/books/' + id +'.json', config)
                 .success(function(config) {
                     console.log('Goood');
                     getBooks();
