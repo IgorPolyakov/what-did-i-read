@@ -13,9 +13,9 @@ module Api
     def create
       book = current_user.book.new(parameters)
       if book.save
-        render json: book, status: :created
+        render status: :created
       else
-        render json:  book.errors, status: :unprocessable_entity
+        render json: book.errors, status: :unprocessable_entity
       end
     end
 
@@ -42,7 +42,15 @@ module Api
     end
 
     def parameters
-      params.require(:book).permit(:title, :url_cover, :description, :progress)
+      params
+        .require(:book)
+        .permit(
+          :title,
+          :url_cover,
+          :description,
+          :progress,
+          genre: []
+        )
     end
   end
 end

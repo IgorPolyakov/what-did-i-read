@@ -8,6 +8,7 @@ class Book
   field :description, type: String
   field :progress, type: Integer
   field :year, type: Integer
+  field :genre, type: Array
   field :created_at, type: DateTime, default: Time.zone.now
   field :updated_at, type: DateTime, default: Time.zone.now
 
