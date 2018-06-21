@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-class NotAuthorizedException < StandardError; end
+class NotAuthorizedException < StandardError
+end
 
 module TokenAuthenticatable
   extend ActiveSupport::Concern
