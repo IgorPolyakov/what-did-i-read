@@ -6,7 +6,7 @@ module Api
     before_action :authenticate_user
 
     def index
-      @books = current_user.book
+      @books = current_user.book.order_by(updated_at: 'asc')
     end
 
     def create
